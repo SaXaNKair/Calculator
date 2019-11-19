@@ -11,10 +11,11 @@ public class Addition implements Operation {
 
     @Override
     public void calculate() {
-        Scanner scanner = new Scanner(new BufferedInputStream(System.in));
-        System.out.println("Enter two numbers:");
-        int i = scanner.nextInt();
-        int j = scanner.nextInt();
-        System.out.println(i + " + " + j + " = " + (i + j));
+        try (Scanner scanner = new Scanner(new BufferedInputStream(System.in))) {
+            System.out.println("Enter two numbers:");
+            int i = scanner.nextInt();
+            int j = scanner.nextInt();
+            System.out.println(i + " + " + j + " = " + (i + j));
+        }
     }
 }

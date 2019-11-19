@@ -19,10 +19,11 @@ public class Calculator {
     }
 
     public void calculate() {
-        Scanner scanner = new Scanner(new BufferedInputStream(System.in));
-        String command = scanner.next();
-        this.operations.stream().filter(op -> op.getCommand().equals(command))
-                .findFirst().orElseThrow(() -> new IllegalArgumentException("Operation is not supported")).calculate();
+        try (Scanner scanner = new Scanner(new BufferedInputStream(System.in))) {
+            String command = scanner.next();
+            this.operations.stream().filter(op -> op.getCommand().equals(command))
+                    .findFirst().orElseThrow(() -> new IllegalArgumentException("Operation is not supported")).calculate();
+        }
     }
 
 }
